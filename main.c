@@ -120,6 +120,7 @@ void Acciones(int opt) {
     }
 }
 
+
 int main() {
     //cuando inicia el programa inicializamos as estructuras que necesitamos
     inicializarLista(&l);
