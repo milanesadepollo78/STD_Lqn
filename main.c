@@ -87,7 +87,30 @@ void Acciones(int opt) {
             //recibe una pila y un participante, este se retorna de una funcion de busqueda sencuencial, que busca al participante en estado "jgando"
             finalizarP(&pila, BuqusquedaFP(&l));
             break;
-        case 10:
+        case 10://revertir el ultimo resultado---Norma
+        {
+        	Resul *ultimo = pop(&pila);
+        	
+        	if(ultimo != NULL){
+        		Participante *aux = l.inicio;
+        		
+        		while(aux != NULL){
+        			
+        			if(aux->ID == ultimo->ID){
+        				aux->Puntuacion = 0;
+        				aux->Estado = Registrado;
+        				
+        				printf("El resultado fue revertido correctamente\n");
+        				break;
+					}
+					aux = aux->sig;
+				}
+				free(ultimo);
+			}
+			break;
+		}
+        	
+        case 11:
             //pa salirnos
             printf("Saliendo del programa\n");
             break;
@@ -96,6 +119,7 @@ void Acciones(int opt) {
             break;
     }
 }
+
 
 int main() {
     //cuando inicia el programa inicializamos as estructuras que necesitamos
@@ -107,6 +131,6 @@ int main() {
     do {
         opt = Menu();
         Acciones(opt);
-    }while (opt != 10);
+    }while (opt != 11);
     return 0;
 }
