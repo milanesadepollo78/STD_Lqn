@@ -1,0 +1,23 @@
+PILAS:H
+  cambiar: void pop(Pila *p);
+por: Resul *pop(Pila *p);
+
+PILAS.C
+  cambiar: void pop(Pila *p)
+  por: 
+Resul *pop(Pila *p){
+    if(pilaVacia(p)){
+        printf("La pila esta vacia\n");
+        return NULL;
+    }
+
+    Resul *tmp = p->tope;
+    p->tope = tmp->sig;
+
+    return tmp;
+}
+
+
+  
+
+  
